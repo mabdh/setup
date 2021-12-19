@@ -1,0 +1,11 @@
+---
+- name: install homebrew cask apps
+  homebrew_cask:
+    name:
+      - visual-studio-code
+      - slack
+      - authy
+    state: present
+
+- set_fact:
+  role_cask_done: true

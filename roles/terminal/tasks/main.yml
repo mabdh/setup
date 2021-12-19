@@ -1,0 +1,30 @@
+---
+- name: install zsh
+  homebrew:
+    name:
+      - zsh
+      - spaceship
+    state: present
+
+- name: install terminal dependencies
+  homebrew:
+    name:
+      - tmux
+      - alacritty
+    state: present
+
+- name: set .zshrc
+  copy: src=zshrc dest={{user_home}}/.zshrc
+
+- name: set .zshrc_custom
+  copy: src=zshrc_custom dest={{user_home}}/.zshrc_custom
+
+- name: set .zshenv
+  copy: src=zshenv dest={{user_home}}/.zshenv
+
+- name: set zsh as default user shell
+  become: true
+  shell: chsh -s $(which zsh) {{whoami}}
+
+- set_fact:
+    role_zsh_done: true

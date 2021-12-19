@@ -1,0 +1,20 @@
+---
+- name: install common dependencies
+  homebrew:
+    name:
+      - jq
+      - tig
+      - ripgrep
+      - fzf
+      - rectangle
+      - spaceship
+    state: present
+
+- name: set tmux.conf
+  copy: src=tmux.conf dest={{user_home}}/.tmux.conf
+
+- name: set alacritty.yml
+  copy: src=alacritty.yml dest={{user_home}}/.alacritty.yml
+
+- set_fact:
+    role_common_done: true

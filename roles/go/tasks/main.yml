@@ -1,0 +1,9 @@
+---
+- name: install go
+  homebrew:
+    name:
+      - golang
+    state: present
+
+- set_fact:
+    role_go_done: true

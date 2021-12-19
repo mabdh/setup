@@ -1,0 +1,10 @@
+---
+- name: install k8s dependencies
+  homebrew:
+    name:
+      - kubectl
+      - kubectx
+    state: present
+
+- set_fact:
+  role_k8s_done: true
